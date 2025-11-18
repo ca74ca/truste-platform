@@ -1,0 +1,44 @@
+{
+  "name": "assistants-nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@clerk/nextjs": "^6.22.0",
+    "@thirdweb-dev/react": "^4.9.4",
+    "@thirdweb-dev/sdk": "^4.0.99",
+    "bcryptjs": "^3.0.2",
+    "cookie": "^1.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "ethers": "^5.8.0",
+    "express": "^4.21.2",
+    "mongodb": "^6.17.0",
+    "next": "^15.3.3",
+    "openai": "^4.46.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.29.0",
+    "@next/eslint-plugin-next": "^15.3.4",
+    "@types/node": "20.12.7",
+    "@types/react": "18.2.79",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.29.0",
+    "postcss": "^8.5.4",
+    "tailwindcss": "^4.1.9",
+    "typescript": "5.4.5",
+    "typescript-eslint": "^8.35.0"
+  },
+  "prettier": {
+    "singleQuote": false
+  }
+}
