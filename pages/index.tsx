@@ -512,7 +512,7 @@ export default function Home() {
           zIndex: 0
         }}
       >
-        <source src="/ai_intro_video1.mp4" type="video/mp4" />
+        <source src="/hero_video.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
