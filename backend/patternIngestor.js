@@ -1,5 +1,8 @@
 // backend/patternIngestor.js
 
+import dotenv from "dotenv";
+dotenv.config({ path: ".env.local" });
+
 import db from "./db.js";
 import TrusteLog from "../models/TrusteLog.js";
 import PatternBrain from "../models/PatternBrain.js";
