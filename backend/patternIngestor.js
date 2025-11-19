@@ -1,6 +1,6 @@
 // backend/patternIngestor.js
 
-import dbConnect from "./db.js";
+import db from "./db.js";
 import TrusteLog from "../models/TrusteLog.js";
 import PatternBrain from "../models/PatternBrain.js";
 import { updateAISignatures } from "./brains/aiSignatureBrain.js";
@@ -13,7 +13,7 @@ import { updateAISignatures } from "./brains/aiSignatureBrain.js";
 export async function ingestPatternsNightly() {
   console.log("[Pattern Ingestor] Starting nightly ingestion...");
   
-  await dbConnect();
+  await db.connect();
 
   try {
     // Get all logs from the last 24 hours
