@@ -24,10 +24,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
-      <div className="relative w-full h-screen bg-black overflow-hidden flex items-center justify-center font-sans">
+      <div className="relative w-full h-screen bg-black overflow-hidden font-sans">
         {/* BACKGROUND VIDEO */}
         <video
-          className="absolute inset-0 w-full h-full object-cover opacity-90"
+          className="absolute top-0 left-0 w-full h-full object-cover opacity-90"
           src="/truste_intro_video1.mp4"
           autoPlay
           loop
