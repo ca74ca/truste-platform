@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "TRUSTE – Effort Verification Engine",
+  "version": "2.2.0",
+  "description": "Scores content using EVE + DOM heuristics and shows a TRUSTE badge with real-time authenticity labels.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["<all_urls>", "https://nao-sdk-api.onrender.com/*"],
+  "background": {
+    "service_worker": "service_worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["badge.css"]
+    }
+  ]
+}
