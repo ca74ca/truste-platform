@@ -8,7 +8,7 @@
 //   4. Optional LLM fallback for uncertain cases
 // ============================================================================
 
-import db from "../db.js";
+import connect from "../db.js";
 import TrusteLog from "../../models/TrusteLog.js";
 import PatternBrain from "../../models/PatternBrain.js";
 
@@ -45,7 +45,7 @@ export async function updateAISignatures(logs, options = {}) {
 
   console.log(`[AI Signature Brain 2026] Start — ${logs.length} logs`);
 
-  await db.connect();
+  await connect();
 
   const platformHint = options.platform || null;
   const includeLLM = options.includeLLM ?? USE_LLM_FALLBACK;

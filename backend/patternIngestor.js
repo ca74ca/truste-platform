@@ -3,7 +3,7 @@
 import dotenv from "dotenv";
 dotenv.config({ path: ".env.local" });
 
-import db from "./db.js";
+import connect from "./db.js";
 import TrusteLog from "../models/TrusteLog.js";
 import PatternBrain from "../models/PatternBrain.js";
 import { updateAISignatures } from "./brains/aiSignatureBrain.js";
@@ -16,7 +16,7 @@ import { updateAISignatures } from "./brains/aiSignatureBrain.js";
 export async function ingestPatternsNightly() {
   console.log("[Pattern Ingestor] Starting nightly ingestion...");
   
-  await db.connect();
+  await connect();
 
   try {
     // Get all logs from the last 24 hours
