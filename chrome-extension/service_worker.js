@@ -124,3 +124,95 @@ function clamp(x, a, b) {
 
 // Heartbeat
 setInterval(() => dlog("TRUSTE heartbeat", new Date().toISOString()), 600000);
+
+// ============================================================
+// TRUSTE BRAIN LOGGER (Anonymous Self-Learning Engine)
+// ============================================================
+
+const TRUSTE_LOG_ENDPOINT = "https://nao-sdk-api.onrender.com/api/truste-log";
+
+let deviceId = null;
+let trusteLogQueue = [];
+
+// ---- Persistent Anonymous Device ID ----
+function getDeviceId() {
+  if (deviceId) return deviceId;
+  deviceId = crypto.randomUUID();
+  chrome.storage.local.set({ trusteDeviceId: deviceId });
+  return deviceId;
+}
+
+chrome.storage.local.get("trusteDeviceId", (res) => {
+  if (res.trusteDeviceId) {
+    deviceId = res.trusteDeviceId;
+  } else {
+    getDeviceId();
+  }
+});
+
+// ---- Capture Scoring For Learning ----
+function logScoreToBrain(text, score) {
+  try {
+    const sig = (text || "").slice(0, 120);
+
+    trusteLogQueue.push({
+      domain: location.hostname || "unknown",
+      textSignature: sig,
+      score,
+      heuristics: {
+        length: text.length,
+        caps: (text.match(/[A-Z]{2,}/g) || []).length,
+        punctuation: (text.match(/[.,!?]/g) || []).length,
+        digits: (text.match(/\d/g) || []).length,
+        emojis: (text.match(/[\u{1F600}-\u{1F64F}]/gu) || []).length,
+        urls: (text.match(/https?:\/\//g) || []).length,
+      },
+      deviceId: deviceId,
+      createdAt: new Date().toISOString(),
+    });
+
+    // Trim queue if too large
+    if (trusteLogQueue.length > 500) {
+      trusteLogQueue = trusteLogQueue.slice(-300);
+    }
+  } catch (err) {
+    console.warn("TRUSTE logScoreToBrain error:", err);
+  }
+}
+
+// ---- Hook Into Batch Results ----
+chrome.runtime.onConnect.addListener((port) => {
+  if (port.name !== "TRUSTE_PORT") return;
+
+  port.onMessage.addListener((msg) => {
+    if (msg.type === "TRUSTE_BATCH_RESULT") {
+      for (const result of msg.results) {
+        // Note: content.js already provides `text` → ensure your batch data includes it
+        logScoreToBrain(result.text || "", result.score);
+      }
+    }
+  });
+});
+
+// ---- Flush Log Queue to Backend Every 2 Minutes ----
+async function flushTrusteLogs() {
+  if (trusteLogQueue.length === 0) return;
+
+  const batch = [...trusteLogQueue];
+  trusteLogQueue = [];
+
+  try {
+    await fetch(TRUSTE_LOG_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ batch }),
+    });
+  } catch (err) {
+    console.error("Failed to send TRUSTE logs:", err);
+    // Restore queue on failure
+    trusteLogQueue.push(...batch);
+  }
+}
+
+// Run every 120 seconds
+setInterval(flushTrusteLogs, 120000);
