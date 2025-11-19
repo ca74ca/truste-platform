@@ -16,7 +16,6 @@ services:
   - type: cron
     name: truste-pattern-ingest
     env: node
-    plan: free
     schedule: "0 2 * * *"  # Runs daily at 2 AM UTC
     buildCommand: npm install
     startCommand: node scripts/runPatternIngest.js
