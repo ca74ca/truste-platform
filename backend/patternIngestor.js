@@ -1,6 +1,6 @@
 // backend/patternIngestor.js
 
-import dbConnect from "../lib/mongodb.js";
+import dbConnect from "./db.js";
 import TrusteLog from "../models/TrusteLog.js";
 import PatternBrain from "../models/PatternBrain.js";
 import { updateAISignatures } from "./brains/aiSignatureBrain.js";
