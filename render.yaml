@@ -1,0 +1,27 @@
+services:
+  # Main Next.js Web Service
+  - type: web
+    name: truste-platform
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: NODE_ENV
+        value: production
+
+  # Nightly Pattern Ingestion Cron Job
+  - type: cron
+    name: truste-pattern-ingest
+    env: node
+    plan: free
+    schedule: "0 2 * * *"  # Runs daily at 2 AM UTC
+    buildCommand: npm install
+    startCommand: node scripts/runPatternIngest.js
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: NODE_ENV
+        value: production
