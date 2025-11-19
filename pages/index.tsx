@@ -7,18 +7,27 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>TRUSTE</title>
+        <title>TRUSTE – Control AI. Verify Reality.</title>
+
         <meta
           name="description"
-          content="AI is rising. Control it. See what's fake and TRUSTE what's real."
+          content="AI is rising. Control it. TRUSTE detects fake content, verifies human effort, and protects creators."
         />
+
+        <meta property="og:title" content="TRUSTE – Control AI. Verify Reality." />
+        <meta
+          property="og:description"
+          content="The rising AI era needs a new layer of truth. TRUSTE verifies human effort, flags fakes, and protects creators."
+        />
+
+        <meta property="og:image" content="/truste_og_image.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
-      {/* FULLSCREEN BACKGROUND VIDEO */}
-      <div className="relative w-full h-screen overflow-hidden flex items-center justify-center font-sans">
+      <div className="relative w-full h-screen bg-black overflow-hidden flex items-center justify-center font-sans">
+        {/* BACKGROUND VIDEO */}
         <video
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover opacity-90"
           src="/truste_intro_video1.mp4"
           autoPlay
           loop
@@ -26,43 +35,46 @@ export default function Home() {
           playsInline
         />
 
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/60 to-black/80 pointer-events-none" />
+        {/* DARK OVERLAY */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/70 to-black/90 pointer-events-none" />
 
         {/* HERO CONTENT */}
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
           <h1 className="text-white text-5xl md:text-6xl font-bold drop-shadow-lg">
-            AI is rising. <span className="text-[#00FFC8]">Control it.</span>
+            AI is rising.{" "}
+            <span className="text-[#00FFC8] animate-pulse">Control it.</span>
           </h1>
 
           <p className="text-gray-200 text-lg md:text-xl mt-4 mb-8">
-            See what&apos;s fake.{" "}
-            <span className="text-[#00FFC8] font-semibold">TRUSTE</span>{" "}
-            what&apos;s real.
+            Expose fakes.{" "}
+            <span className="text-[#00FFC8] font-semibold">Verify real effort.</span>{" "}
+            Trust what matters.
           </p>
 
           {/* CTA BUTTONS */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-6">
+            
             <a
               href="/downloads/truste-extension.zip"
-              className="px-8 py-3 text-white border border-[#00FFC8] rounded-lg hover:bg-[#00FFC8]/20 transition-all shadow-lg"
+              className="px-8 py-3 text-white border border-[#00FFC8] rounded-lg hover:bg-[#00FFC8]/20 transition-all shadow-[#00FFC8]/40 shadow-md hover:shadow-lg"
             >
               Download Chrome Extension
             </a>
 
             <a
               href="/get-api-key"
-              className="px-8 py-3 text-white border border-[#00FFC8] rounded-lg hover:bg-[#00FFC8]/20 transition-all shadow-lg"
+              className="px-8 py-3 text-white border border-[#00FFC8] rounded-lg hover:bg-[#00FFC8]/20 transition-all shadow-[#00FFC8]/40 shadow-md hover:shadow-lg"
             >
               Get API Key
             </a>
 
             <a
               href="/docs/sdk"
-              className="px-8 py-3 text-white border border-[#00FFC8] rounded-lg hover:bg-[#00FFC8]/20 transition-all shadow-lg"
+              className="px-8 py-3 text-white border border-[#00FFC8] rounded-lg hover:bg-[#00FFC8]/20 transition-all shadow-[#00FFC8]/40 shadow-md hover:shadow-lg"
             >
               Explore the SDK
             </a>
+
           </div>
         </div>
       </div>
