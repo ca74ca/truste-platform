@@ -1,4 +1,4 @@
-const { MongoClient } = require('mongodb');
+import { MongoClient } from 'mongodb';
 
 const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
 const dbName = process.env.MONGODB_DBNAME || 'test';
@@ -22,10 +22,14 @@ async function connect() {
   return db;
 }
 
-module.exports = {
+function getUsers() {
+  if (!db) throw new Error('Database not connected. Call connect() first.');
+  return db.collection('users');
+}
+
+export default {
   connect,
   get users() {
-    if (!db) throw new Error('Database not connected. Call connect() first.');
-    return db.collection('users');
+    return getUsers();
   }
 };
