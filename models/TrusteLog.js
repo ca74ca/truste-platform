@@ -14,6 +14,14 @@ const TrusteLogSchema = new mongoose.Schema({
     emojis: Number,
     urls: Number,
   },
+  // AI Signature Detection Results
+  aiSignature: {
+    isAI: Boolean,
+    confidence: Number,
+    model: String, // gpt-4, claude, gemini, human, unknown
+    markers: [String],
+    method: String, // heuristic, rhythm, llm
+  },
   deviceId: { type: String, index: true },
   createdAt: { type: Date, default: Date.now, index: true }
 });

@@ -3,6 +3,7 @@
 import dbConnect from "../lib/mongodb.js";
 import TrusteLog from "../models/TrusteLog.js";
 import PatternBrain from "../models/PatternBrain.js";
+import { updateAISignatures } from "./brains/aiSignatureBrain.js";
 
 /**
  * Pattern Ingestor - Nightly ML Training Pipeline
@@ -20,6 +21,9 @@ export async function ingestPatternsNightly() {
     const logs = await TrusteLog.find({ createdAt: { $gte: cutoff } });
 
     console.log(`[Pattern Ingestor] Processing ${logs.length} logs...`);
+
+    // ✨ NEW: AI Signature Detection
+    await updateAISignatures(logs);
 
     // Group by platform/domain
     const platformGroups = {};
