@@ -31,6 +31,7 @@
   "devDependencies": {
     "@eslint/js": "^9.29.0",
     "@next/eslint-plugin-next": "^15.3.4",
+    "@tailwindcss/postcss": "^4.1.17",
     "@types/node": "20.12.7",
     "@types/react": "18.2.79",
     "autoprefixer": "^10.4.22",
