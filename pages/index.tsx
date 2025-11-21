@@ -1,4 +1,5 @@
 import React from "react";
+import VaracisSidebar from "@/components/VaracisSidebar";
 
 export default function Home() {
   return (
@@ -16,6 +17,9 @@ export default function Home() {
 
       {/* Dark overlay for readability */}
       <div className="fixed inset-0 bg-black/50 z-10" />
+
+      {/* Varacis Sidebar Menu */}
+      <VaracisSidebar />
 
       {/* Center Text Block */}
       <div className="fixed inset-0 flex flex-col items-center justify-center px-6 text-center z-20">

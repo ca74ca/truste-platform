@@ -16,6 +16,7 @@ export default function VaracisSidebar() {
         flex flex-col justify-center 
         text-white pointer-events-none
         transition-all duration-700
+        z-30
         ${show ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0"}
       `}
       style={{
