@@ -40,7 +40,7 @@ export default function VaracisSidebar() {
         </a>
 
         <a
-          href="/users"
+          href="/everyday_users"
           className="text-white text-sm tracking-wide hover:text-[#e5fff0] transition-colors"
         >
           EVERYDAY USERS
