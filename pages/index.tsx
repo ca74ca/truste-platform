@@ -11,14 +11,14 @@ export default function Home() {
         muted
         loop
         playsInline
-        className="absolute top-0 left-0 w-screen h-screen object-cover object-center"
+        className="fixed top-0 left-0 w-screen h-screen object-cover object-center z-0"
       />
 
       {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-black/50" />
+      <div className="fixed inset-0 bg-black/50 z-10" />
 
       {/* Center Text Block */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+      <div className="fixed inset-0 flex flex-col items-center justify-center px-6 text-center z-20">
         <h1 className="text-white text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-[0_0_20px_rgba(0,0,0,0.8)]">
           VARACIS AI
         </h1>
