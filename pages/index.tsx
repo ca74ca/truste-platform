@@ -11,7 +11,7 @@ export default function Home() {
         muted
         loop
         playsInline
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute top-0 left-0 w-screen h-screen object-cover object-center"
       />
 
       {/* Dark overlay for readability */}
