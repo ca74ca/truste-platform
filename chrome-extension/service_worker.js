@@ -75,7 +75,7 @@ chrome.runtime.onConnect.addListener((port) => {
             const raw = computeHeuristicScore(it.text || "");
             updateRunningCalibrators(raw);
             const finalScore = universalCalibrate(raw);
-            return { elPath: it.elPath, score: finalScore };
+            return { elPath: it.elPath, text: it.text, score: finalScore };
           })
         );
 
@@ -129,7 +129,7 @@ setInterval(() => dlog("TRUSTE heartbeat", new Date().toISOString()), 600000);
 // TRUSTE BRAIN LOGGER (Anonymous Self-Learning Engine)
 // ============================================================
 
-const TRUSTE_LOG_ENDPOINT = "https://nao-sdk-api.onrender.com/api/truste-log";
+const TRUSTE_LOG_ENDPOINT = "https://truste-platform.onrender.com/api/truste-log";
 
 let deviceId = null;
 let trusteLogQueue = [];
