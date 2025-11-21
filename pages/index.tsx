@@ -29,7 +29,7 @@ export default function Home() {
 
         <p className="mt-4 text-white/90 text-lg md:text-2xl font-light max-w-3xl drop-shadow-[0_0_10px_rgba(0,0,0,0.6)]">
           The First Living, Evolving Intelligence  
-          Designed to Help Keep the World Real.
+          Designed to keep the World Real.
         </p>
       </div>
 

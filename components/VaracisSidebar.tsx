@@ -23,19 +23,30 @@ export default function VaracisSidebar() {
         animation: show ? "varacisDrop 1s ease-out forwards" : "none",
       }}
     >
-      <nav className="space-y-10 text-2xl tracking-wide font-light pointer-events-auto">
-        <span className="hover:text-white/70 transition cursor-pointer">
+      <div className="flex flex-col space-y-4 text-left pointer-events-auto">
+
+        <a
+          href="/brands"
+          className="text-white text-sm tracking-wide hover:text-[#c5ffdb] transition-colors"
+        >
           BRANDS & AGENCIES
-        </span>
+        </a>
 
-        <span className="hover:text-white/70 transition cursor-pointer">
+        <a
+          href="/platforms"
+          className="text-white text-sm tracking-wide hover:text-[#d0ffe5] transition-colors"
+        >
           APPS & PLATFORMS
-        </span>
+        </a>
 
-        <span className="hover:text-white/70 transition cursor-pointer">
+        <a
+          href="/users"
+          className="text-white text-sm tracking-wide hover:text-[#e5fff0] transition-colors"
+        >
           EVERYDAY USERS
-        </span>
-      </nav>
+        </a>
+
+      </div>
     </div>
   );
 }
